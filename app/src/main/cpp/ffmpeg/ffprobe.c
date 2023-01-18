@@ -3636,6 +3636,13 @@ static inline int check_section_show_entries(int section_id)
             do_show_##varname = 1;                                      \
     } while (0)
 
+    /**
+     * 在ffprobe.c源码中，是没有对外方法提供jni调用的，也没有返回字符串结果。所以我们需要修改下ffprobe.c源码：
+     * 首先把main方法改为ffprobe_run方法，并且在ffprobe.h里面声明该方法，然后增加字符串打印方法。
+     * @param argc
+     * @param argv
+     * @return
+     */
 char* ffprobe_run(int argc, char **argv)
 {
     const Writer *w;
